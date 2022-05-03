@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index, name="venuehome"),
     path('login', views.loginUser, name="login"),
     path('logout', views.logoutUser, name="logout"),
+
 ]

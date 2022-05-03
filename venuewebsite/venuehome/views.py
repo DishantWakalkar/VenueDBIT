@@ -1,7 +1,11 @@
+from email.policy import HTTP
+from http.client import HTTPResponse
+from smtplib import SMTPResponseException
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
 from .models import SeminarHall
+
 
 
 # Create your views here.
@@ -31,3 +35,8 @@ def logoutUser(request):
     logout(request)
     return redirect ("/login")
 
+<<<<<<< Updated upstream
+=======
+
+    
+>>>>>>> Stashed changes
