@@ -21,7 +21,6 @@ class Mondini_Hall(models.Model):
       Department = models.CharField(max_length=200)
       Date = models.DateField('Event Date')
       Start_time = models.TimeField('Start time')
-      End_time = models.TimeField('End time')
       Estimated_people = models.CharField('No of people attending ',max_length=200)
       no_of_chairs = models.CharField('No of chairs required ',max_length=200)
       Projector = models.CharField(max_length=20)
