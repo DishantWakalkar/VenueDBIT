@@ -7,8 +7,8 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Open Viewdeils.html",
-            "file": "c:\\Users\\Yadav\\Documents\\GitHub\\VenueDBIT\\venuewebsite\\templates\\Viewdeils.html"
+            "name": "Open Viewdetails.html",
+            "file": "c:\\Users\\Yadav\\Documents\\GitHub\\VenueDBIT\\venuewebsite\\templates\\Viewdetails.html"
         }
     ]
 }
