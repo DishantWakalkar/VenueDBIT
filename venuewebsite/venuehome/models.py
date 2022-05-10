@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Signin(models.Model):
@@ -12,9 +13,10 @@ class SeminarHall(models.Model):
       Event_name = models.CharField('Event Name',max_length=200)
       Department = models.CharField(max_length=200)
       Date = models.DateField('Event Date')
-      Start_time = models.TimeField('Start time')
-      End_time = models.TimeField('End time')
       Projector = models.CharField(max_length=20)
+
+      def __str__(self):
+            return f'{self.Date} for {self.Event_name} '
 
 class Mondini_Hall(models.Model):
       Event = models.CharField('Event ',max_length=200)
@@ -39,3 +41,12 @@ class Ground(models.Model):
      Date = models.DateField('Event Date')
      Start_time = models.TimeField('Start time')
      End_time = models.TimeField('End time')
+
+class SeminarBooking(models.Model):
+      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+      hall = models.ForeignKey(SeminarHall, on_delete=models.CASCADE)
+      Start_time = models.DateTimeField('Start time')
+      End_time = models.DateTimeField('End time')
+
+      def __str__(self):
+            return f'{self.user} has booked {self.hall} from {self.Start_time} to {self.End_time}'

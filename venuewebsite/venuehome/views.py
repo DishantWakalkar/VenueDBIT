@@ -1,15 +1,11 @@
-import email
-from email import message
-from email.policy import HTTP
-from http.client import HTTPResponse
+from pyexpat import model
 from pyexpat.errors import messages
-from smtplib import SMTPResponseException
-from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
-from .models import SeminarHall
+from django.views.generic import ListView
+from .models import SeminarHall, SeminarBooking
 
 # Create your views here.
 def index(request):
@@ -67,3 +63,10 @@ def signupUser(request):
 
 def viewdetails(request):
     return render (request, 'Viewdetails.html')
+
+class RoomList(ListView):
+    model=SeminarHall
+    
+
+class BookingList(ListView):
+    model=SeminarBooking

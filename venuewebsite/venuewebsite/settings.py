@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'venuehome.apps.VenuehomeConfig',
+    'venuehome.booking_functions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
