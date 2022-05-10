@@ -1,11 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Signin, SeminarHall, Mondini_Hall, BoscoHall, Ground, SeminarBooking
+from .models import Signin, Venue, Booking
 
 admin.site.register(Signin)
-admin.site.register(SeminarHall)
-admin.site.register(Mondini_Hall)
-admin.site.register(BoscoHall)
-admin.site.register(Ground)
-admin.site.register(SeminarBooking)
+admin.site.register(Venue)
+admin.site.register(Booking)

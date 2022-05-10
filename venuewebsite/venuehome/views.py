@@ -1,11 +1,12 @@
-from pyexpat import model
-from pyexpat.errors import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
-from django.views.generic import ListView
-from .models import SeminarHall, SeminarBooking
+from django.views.generic import ListView, FormView
+from matplotlib.style import available
+from .models import Booking, Venue
+from .forms import AvailablityForm
+from .booking_functions.availabilty import check_availability
 
 # Create your views here.
 def index(request):
@@ -64,9 +65,20 @@ def signupUser(request):
 def viewdetails(request):
     return render (request, 'Viewdetails.html')
 
-class RoomList(ListView):
-    model=SeminarHall
-    
+class VenueList(ListView):
+    model=Venue
 
 class BookingList(ListView):
-    model=SeminarBooking
+    model=Booking
+
+class BookingView(FormView):
+    form_class= AvailablityForm
+    template_name = 'availability_form.html'
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        venue_list = Venue.objects.filter(category=data['venue_name'])
+        available_venue=[]
+        for venue in venue_list:
+            if check_availability(venue, data['check_in'], data['check_out']):
+                available_venue.append(venue)

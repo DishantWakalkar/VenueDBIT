@@ -1,11 +1,10 @@
-import datetime
-from venuehome.models import SeminarHall, SeminarBooking 
+from venuehome.models import Venue, Booking
 
-def check_availability(hall, Start_time, End_time):
-    avail_list[]
-    booking_list = SeminarBooking.objects.filter(hall=hall)
+def check_availability(venue, check_in, check_out):
+    avail_list=[]
+    booking_list = Booking.objects.filter(venue=venue)
     for booking in booking_list:
-        if booking.Start_time > End_time or booking.End_time < Start_time:
+        if booking.check_in > check_out or booking.check_out < check_in:
             avail_list.append(True)
         else:
             avail_list.append(False)
