@@ -10,5 +10,6 @@ urlpatterns = [
     path('signup', views.signupUser, name="signup"),
     path('viewdetails', views.viewdetails, name="viewdetails"),
     path('roomlist/', VenueList.as_view(), name="VenueList"),
-    path('bookinglist/', BookingList.as_view(), name="BookingList"), 
+    path('bookinglist/', BookingList.as_view(), name="BookingList"),
+    path('bookingform', views.bookingform, name="bookingform"), 
 ]

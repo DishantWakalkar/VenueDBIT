@@ -65,6 +65,8 @@ def signupUser(request):
 def viewdetails(request):
     return render (request, 'Viewdetails.html')
 
+def bookingform(request):
+    return render (request, 'bookingform.html')
 class VenueList(ListView):
     model=Venue
 
