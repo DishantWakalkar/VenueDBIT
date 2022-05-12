@@ -6,7 +6,8 @@ from django.views.generic import ListView, FormView
 from matplotlib.style import available
 from .models import Booking, Venue
 from .forms import AvailablityForm
-from .booking_functions.availabilty import check_availability
+from django.http import HttpResponse
+from venuehome.booking_functions.availabilty import check_availability
 
 # Create your views here.
 def index(request):
@@ -62,8 +63,11 @@ def signupUser(request):
     else:    
         return render (request, 'signup.html')
 
-def viewdetails(request):
-    return render (request, 'Viewdetails.html')
+def availability_form(request):
+    return render (request, 'availability_form.html')
+
+def dashboard(request):
+    return render (request, 'Dashboard.html')
 
 def bookingform(request):
     return render (request, 'bookingform.html')
@@ -79,8 +83,13 @@ class BookingView(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        venue_list = Venue.objects.filter(category=data['venue_name'])
+        venue_list = Venue.objects.filter(place=data['venue_name'])
         available_venue=[]
         for venue in venue_list:
             if check_availability(venue, data['check_in'], data['check_out']):
                 available_venue.append(venue)
+        if len(available_venue) > 0:
+                venue=available_venue[0]
+                return HttpResponse('booking')
+        else:
+            return HttpResponse('not booking')

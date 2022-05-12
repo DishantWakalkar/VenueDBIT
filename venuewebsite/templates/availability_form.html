@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        body{
+            margin-top:20px;
+            background:#000;
+        }
+        .card {
+            margin-bottom: 30px;
+        }
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-clip: border-box;
+            border: 0 solid transparent;
+            border-radius: 0;
+            background:#000;
+        }
+        .card .card-subtitle {
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: #8898aa;
+        }
+        .table-product.table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f3f8fa!important
+        }
+        .table-product td{
+            border-top: 0px solid #dee2e6 !important;
+            color: #728299!important;
+        }
+
+        form {
+            color:#fff;
+        }
+    </style>    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <a class="navbar-brand" href="#" style="color: aliceblue;">ADA VenueBooking  </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color: aliceblue;">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/dashboard" style="color: aliceblue;">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#" style="color: aliceblue;">Contact</a>
+            </li>
+          </ul>
+          
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" href="/logout" style="background-color: #6f42c1;"> Logout </button>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Venue Name</h3>
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-6">
+                        <div class="white-box text-center" style="float:left" ><img src="/static/dbit_logo 1.png" class="img-responsive"></div>
+                    </div>
+                </div>
+            <div class="d-flex justify-content-center">   
+                <div class="row1">
+                    <div class="col-lg-7 col-md-7 col-sm-6 ">
+                        <h4 class="box-title mt-5 mx-4" style="color:#fff" >Venue Name description</h4>
+                        <p style="color:#fff" >Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                            
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button class="btn btn-primary btn-rounded">Book Room</button>
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
