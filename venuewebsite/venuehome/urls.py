@@ -13,5 +13,5 @@ urlpatterns = [
     path('roomlist/', VenueList.as_view(), name="VenueList"),
     path('bookinglist/', BookingList.as_view(), name="BookingList"),
     path('bookingform', views.bookingform, name="bookingform"),
-     path('book/', BookingView.as_view(), name="BookingView"),  
+    path('book/', BookingView.as_view(), name="BookingView"),  
 ]

@@ -3,11 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 from django.views.generic import ListView, FormView
-from matplotlib.style import available
 from .models import Booking, Venue
 from .forms import AvailablityForm
 from django.http import HttpResponse
-from venuehome.booking_functions.availabilty import check_availability
+from venuehome.booking_functions.availability import check_availability
 
 # Create your views here.
 def index(request):
@@ -71,6 +70,7 @@ def dashboard(request):
 
 def bookingform(request):
     return render (request, 'bookingform.html')
+
 class VenueList(ListView):
     model=Venue
 
@@ -88,8 +88,9 @@ class BookingView(FormView):
         for venue in venue_list:
             if check_availability(venue, data['check_in'], data['check_out']):
                 available_venue.append(venue)
+
         if len(available_venue) > 0:
-                venue=available_venue[0]
-                return HttpResponse('booking')
+            venue=available_venue[0]
+            return HttpResponse('booking')
         else:
             return HttpResponse('not booking')
