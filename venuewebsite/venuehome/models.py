@@ -35,7 +35,7 @@ class Booking(models.Model):
       check_out = models.DateTimeField()
       Estimated_people = models.CharField('Estimated people',max_length=200)
       No_of_Chairs = models.CharField('Chairs required',max_length=200)
-      Projector = models.BooleanField()
+      Projector = models.CharField('Projector required',max_length=1)
       Any_requirements = models.TextField('Specify Requirements if any',blank=True)
 
       def __str__(self):

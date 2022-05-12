@@ -91,6 +91,28 @@ class BookingView(FormView):
 
         if len(available_venue) > 0:
             venue=available_venue[0]
-            return HttpResponse('booking')
+            return redirect('/bookingform')
         else:
             return HttpResponse('not booking')
+
+def BookVenue(request):
+    if request.method == 'POST':
+        user=request.user
+        venue=request.POST['venue']
+        EventName=request.POST['EventName']
+        Department=request.POST['Department']
+        check_in=request.POST['check_in']
+        check_out=request.POST['check_out']
+        Estimated_people=request.POST['Estimated_people']
+        No_of_chairs=request.POST['No_of_chairs']
+        Projector=request.POST['Projector']
+        
+        if Booking.objects.filter(venue=venue).exists():
+            if Booking.objects.filter(check_in=check_in).exists():
+                messages.info(request,'Aldready booked for that day')
+                return redirect('bookingform')
+            else:
+                booking = Booking.objects.create_booking(user=user, venue=venue, EventName=EventName, Department=Department, check_in=check_in, check_out=check_out, Estimated_people=Estimated_people, No_of_chairs=No_of_chairs, Projector=Projector)
+                booking.save();
+        
+        return redirect('/')
